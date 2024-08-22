@@ -3,17 +3,26 @@ import time
 import os
 import sys
 
-def load(file):
+def load(html,css=""):
     path = os.path.dirname(sys.argv[0])
-    f = open(f"{path}/web/{file}")
-    return f.read()
+    f = open(f"{path}/web/{html}")
+    c = open(f"{path}/web/{css}")
+    out = f"""
+    <html>
+    <style>
+    {c.read()}
+    </style>
+    {f.read()}
+
+    """
+    return out
 
 class HelloWorldApp:
 
     @cherrypy.expose
     def index(self):
         # HTML for the webpage
-        return load("main.html")
+        return load("main.html","main.css")
 
     @cherrypy.expose
     def dropa(self):

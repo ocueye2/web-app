@@ -1,0 +1,36 @@
+body {
+    background-color: rgb(48, 68, 77);
+    color: white;
+}
+
+.main {
+    color: white;
+    background-color: rgb(48, 64, 70);
+}
+
+.title {
+    text-align: center;
+    background-color: rgb(135, 143, 153);
+    padding: 20px;
+    border-radius: 20px;
+    margin-bottom: 10px;
+}
+#grid { 
+    display: grid;
+    grid-template-rows: 1fr ;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 2vw;
+    }
+
+
+a {
+    background-color: #2a70b5; /* Green */
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  border-radius: 20px;
+}
