@@ -18,6 +18,11 @@ def load(html,css="",note=""):
     """
     return out
 
+def eventa():
+    print("dropa")
+def eventb():
+    print("dropb")
+
 class HelloWorldApp:
 
     @cherrypy.expose
@@ -27,12 +32,13 @@ class HelloWorldApp:
 
     @cherrypy.expose
     def eventa(self):
-            eventa()
-
-
-
+        eventa()
         return load("main.html","main.css","drop a active")
 
+    @cherrypy.expose
+    def eventb(self):
+        eventb()
+        return load("main.html","main.css","drop b active")
     @cherrypy.expose
     def stop(self):
         exit()
@@ -47,5 +53,4 @@ if __name__ == '__main__':
     cherrypy.quickstart(HelloWorldApp())
 
 
-def eventa()
-    
+
