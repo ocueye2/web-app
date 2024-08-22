@@ -3,7 +3,7 @@ import time
 import os
 import sys
 
-def load(html,css=""):
+def load(html,css="",note=""):
     path = os.path.dirname(sys.argv[0])
     f = open(f"{path}/web/{html}")
     c = open(f"{path}/web/{css}")
@@ -13,7 +13,8 @@ def load(html,css=""):
     {c.read()}
     </style>
     {f.read()}
-
+    <div class="note">
+    <h2> {note} </h2>
     """
     return out
 
@@ -25,13 +26,12 @@ class HelloWorldApp:
         return load("main.html","main.css")
 
     @cherrypy.expose
-    def dropa(self):
+    def eventa(self):
+            eventa()
 
-        print("Dropped")
 
 
-        return ("<h1> done </h1> <a href='/proxy/8000/'>test </a>")
-        raise cherrypy.HTTPRedirect('/proxy/1111/')
+        return load("main.html","main.css","drop a active")
 
     @cherrypy.expose
     def stop(self):
@@ -46,3 +46,6 @@ if __name__ == '__main__':
     })
     cherrypy.quickstart(HelloWorldApp())
 
+
+def eventa()
+    
