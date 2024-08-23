@@ -21,10 +21,14 @@ def load(html,css="",note=""):
     out = out.replace("<replacemehere>",f"{cmd(note)}")
     return out
 
-def eventa():
-    print("dropa")
-def eventb():
-    print("dropb")
+def listcues():
+    path = os.path.dirname(sys.argv[0])
+    out = ""
+    for i in os.listdir(f"{path}/cues"):
+        out = out + f"\n {i}"
+    return out
+
+
 
 def cmd(text):
     global cm
@@ -51,13 +55,21 @@ class HelloWorldApp:
         if cue == "clear":
                 global cm
                 cm = []
+                for i in range(9):
+                    cm.append("-")
+        elif cue == "refresh":
+            print("refresh")
+        elif cue == "list":
+            listcues()
+            out = ""
         
         elif not safety == False:
             
             if cue == "stop":
                 print("stopping")
                 exit()
-
+            else:
+                out = f"error, cue '{cue}' does not exist"
 
         elif cue == "":
             out = "new connection"
