@@ -4,6 +4,9 @@ import os
 import sys
 
 cm = []
+for i in range(9):
+    cm.append("-")
+
 def load(html,css="",note=""):
     path = os.path.dirname(sys.argv[0])
     f = open(f"{path}/web/{html}")
@@ -15,7 +18,7 @@ def load(html,css="",note=""):
     </style>
     {f.read()}
     """
-    out.replace("<replacemehere>",f"{note}")
+    out = out.replace("<replacemehere>",f"{cmd(note)}")
     return out
 
 def eventa():
@@ -25,7 +28,18 @@ def eventb():
 
 def cmd(text):
     global cm
-    for i in cm[cm.len() - 10:cm.len()]
+    if not text == "":
+        cm.append(text)
+    out = ""
+
+    if len(cm) > 5:
+        ls = cm[len(cm) - 5: len(cm)]
+    else:
+        ls = cm
+    
+    for i in ls:
+        out = f"{out} <p> {i} </p>"
+    return out
 
 
 class HelloWorldApp:
@@ -33,9 +47,27 @@ class HelloWorldApp:
     @cherrypy.expose
     def index(self,cue="",safety=False):
         print(f"{cue}, {safety}")
-        if safety:
-            print(cue)
-        return load("main.html","main.css")
+        out = ""
+        if cue == "clear":
+                global cm
+                cm = []
+        
+        elif not safety == False:
+            
+            if cue == "stop":
+                print("stopping")
+                exit()
+
+
+        elif cue == "":
+            out = "new connection"
+        else:
+            out = f"could not run '{cue}', safety not on"
+            
+
+           
+        return load("main.html","main.css",out)
+    
 
    
             
