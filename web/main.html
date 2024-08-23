@@ -8,10 +8,16 @@
     <h1> Drop controller </h1>
     <h2> </h2>
         </div>
+        <div class="title">
+            <p><replacemehere></p>
+        </div>
         <div id="grid">
-                <a href="/proxy/1111/eventa">event a</a>
-                <a href="/proxy/1111/eventb">event b</a>
-                <a href="/proxy/1111/stop" style="background-color: red;">stop</a>
+            
+            <form method="post" action="/proxy/1111/index">
+                <input type="cue" id="cue" name="cue">
+                <input type="checkbox" id="cue" name="cue" value="cue">
+                <button type="submit">send</button>
+            </form>
         </div>
     </body>
 </html>

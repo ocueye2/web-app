@@ -3,6 +3,7 @@ import time
 import os
 import sys
 
+cm = []
 def load(html,css="",note=""):
     path = os.path.dirname(sys.argv[0])
     f = open(f"{path}/web/{html}")
@@ -13,9 +14,8 @@ def load(html,css="",note=""):
     {c.read()}
     </style>
     {f.read()}
-    <div class="note">
-    <h2> {note} </h2>
     """
+    out.replace("<replacemehere>",f"{note}")
     return out
 
 def eventa():
@@ -23,25 +23,21 @@ def eventa():
 def eventb():
     print("dropb")
 
+def cmd(text):
+    global cm
+    for i in cm[cm.len() - 10:cm.len()]
+
+
 class HelloWorldApp:
 
     @cherrypy.expose
-    def index(self):
-        # HTML for the webpage
+    def index(self,cue="",safety=False):
+        print(f"{cue}, {safety}")
+        if safety:
+            print(cue)
         return load("main.html","main.css")
 
-    @cherrypy.expose
-    def eventa(self):
-        eventa()
-        return load("main.html","main.css","drop a active")
-
-    @cherrypy.expose
-    def eventb(self):
-        eventb()
-        return load("main.html","main.css","drop b active")
-    @cherrypy.expose
-    def stop(self):
-        exit()
+   
             
 
 if __name__ == '__main__':
