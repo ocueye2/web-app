@@ -87,7 +87,7 @@ class HelloWorldApp:
 if __name__ == '__main__':
     # Set up the server configuration to listen on port 1111
     cherrypy.config.update({
-        'server.socket_port': 1111,
+        'server.socket_port': 8080,
         'log.screen': False  # Disable console logging
     })
     cherrypy.quickstart(HelloWorldApp())
